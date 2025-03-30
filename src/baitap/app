@@ -1,0 +1,194 @@
+// buoi 12
+// import React, { useEffect } from "react";
+// import axios from "axios";
+// import User from "./component/User";
+// import Healder from "./component/Healder";
+
+// const App = () => {
+//   // module axios hiển thị API  
+//   // useEffect(() => {
+//   //   //hiển thị dữ liệu: get()
+//   //   //sửa dữ liệu: put()
+//   //   //xóa dữ liệu: delete()
+//   //   //thêm dữ liệu: post()
+//   //   axios
+//   //     .get("https://jsonplaceholder.typicode.com/users")
+//   //     .then(({ User }) => {
+//   //       console.log(User[2].name);
+//   //     })
+//   //     .catch(({ error }) => {
+//   //       console.log(error);
+//   //     });
+//   // }, []);
+//   return (
+//     <>
+//       <div id="wrapper" className="container">
+        
+//         <Healder />
+//         <User />
+//       </div>
+//     </>
+//   );
+// };
+
+// export default App;
+
+
+
+// buoi11
+// import React from "react";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Healder from "./component/Healder";
+// import Footer from "./component/Footer";
+// import Home from "./component/Home";
+// import About from "./component/About";
+// import Contact from './component/Contact';
+// import Notpound from './component/Notpound';
+// import Detail from "./component/Details";
+
+// const App = () => {
+//   return (
+//     <BrowserRouter>
+//       <>
+//         <div>
+//           <Healder />
+//           <Routes>
+//             <Route path="/" element={<Home />} />
+//             <Route path="/About" element={<About />} />
+//             <Route path="/Contact" element={<Contact />} />
+//             <Route path="/Details" element={<Detail />} />
+//             <Route path="/*" element={<Notpound />} />
+//           </Routes>
+//           <Footer />
+//         </div>
+//       </>
+//     </BrowserRouter>
+//   );
+// };
+
+// export default App;
+
+
+
+// buoi10
+// import React from "react";
+// import Up from "./component/Up";
+// import { Provider } from "react-redux";
+// import Down from "./component/Down";
+// import store from "./redux-setup/Store";
+// const App = () => {
+//   return (
+//     <Provider store={store}>
+//       <div className="container">
+//         <div className="row justify-content-center">
+//           <Up />
+//           <Down />
+//         </div>
+//       </div>
+//     </Provider>
+//   );
+// };
+
+// export default App;
+
+
+/* buoi 9
+import React from "react";
+import Up from "./component/Upp";
+import Down from "./component/Dow";
+import { Provider } from "react-redux";
+import store from "./redux-setup/Store";
+const App = () => {
+  return (
+    <Provider store={store}>
+      <div className="container">
+        <div className="row justify-content-center">
+          <Up />
+          <Down />
+        </div>
+      </div>
+    </Provider>
+  );
+};
+
+export default App; */
+
+
+
+
+
+
+
+// buoi 7
+// import React from "react";
+// import { Provider } from "react-redux";
+// import store from "./redux-setup/Store";
+// import { useState } from "react";
+// import Button from "./component/Button";
+// import Number from "./component/Number";
+
+// const App = () => {
+
+//   return (
+//     <Provider store={store}>
+//       <div className="container">
+//         <div className="row">
+//           <div className="col-lg-12 col-md-12 col-sm-12 text-center">
+//             <div id="main">
+//             <Number  />
+//             <Button />
+
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </Provider>
+//   );
+// };
+
+// export default App;
+
+// buoi 6
+// import React, { useEffect, useState } from "react";
+// import Thumbnail from "./component/Thumbnail";
+// import Title from "./component/Title";
+// import Description from "./component/Description";
+
+// const App = () => {
+
+//   useEffect(() => {
+//     setTimeout(() => {
+//       setTitle("What is Lorem Ipsum?") ;
+//     }, 2000);
+
+//   },[])
+//   const [title, setTitle] = useState("Loading...");
+//   const [sttTitle, setSttTile] = useState(true);
+//   const updateTitle = (newTitle) => setTitle(newTitle);
+//   const updateSttTitle = () => setSttTile(!sttTitle);
+//   const [description, setDescription] = useState(<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>);
+//   const [sttDescription, setSttDescription] = useState(true);
+//   const updateDescription = (newDescription) => setDescription(newDescription);
+//   const updateSttDescription = () => setSttDescription(!sttDescription);
+//   return (
+//     <div id="main">
+//       <div className="content-item">
+//         <Thumbnail />
+//         <Title
+//           updateTitle={updateTitle}
+//           title={title}
+//           sttTitle={sttTitle}
+//           updateSttTitle={updateSttTitle}
+//         />
+//         <Description
+//           updateDescription={updateDescription}
+//           description={description}
+//           sttDescription={sttDescription}
+//           updateSttDescription={updateSttDescription}
+//         />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default App;

@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: arial;
+    font-size: 14px;
+    color: #333;
+}
+
+#wrapper {
+    margin-top: 20px;
+}
+#wrapper h2 a{
+    color: #333;
+    text-decoration: none;
+}
+#wrapper table tr td:nth-child(3) a{
+    color: #fff;
+}
+#details tr:first-child td:first-child{
+    width: 150px;
+}
