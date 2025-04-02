@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getImageProduct } from "../ultils";
+import { formatPrice, getImageProduct } from "../ultils";
+
 export const ProductItems = ({ item }) => {
   return (
     <>
@@ -12,7 +13,10 @@ export const ProductItems = ({ item }) => {
           <Link to={`/ProductDetails-${item._id}`}>{item.name}</Link>
         </h4>
         <p>
-          Giá Bán: <span>{item.price}đ</span>
+          Giá Bán:{" "}
+          <span>
+            {formatPrice(item.price)}
+          </span>
         </p>
       </div>
     </>

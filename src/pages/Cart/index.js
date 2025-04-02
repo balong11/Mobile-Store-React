@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getImageProduct } from "../../shared/ultils";
+import { formatPrice, getImageProduct } from "../../shared/ultils";
 import { deleteItemCart, updateCart } from "../../redux-setup/reducers/cart";
 import { order } from "../../services/Api";
 
@@ -88,7 +88,7 @@ const Cart = () => {
                 />
               </div>
               <div className="cart-price col-lg-3 col-md-3 col-sm-12">
-                <b>{item.price * item.qty}</b>
+                <b>{formatPrice(item.price * item.qty)}</b>
                 <a onClick={(e) => clickDeleteItem(e, item._id)} href="#">
                   Xóa
                 </a>
@@ -103,10 +103,10 @@ const Cart = () => {
             </div>
             <div className="cart-price col-lg-3 col-md-3 col-sm-12">
               <b>
-                {itemsCart.reduce(
+                {formatPrice(itemsCart.reduce(
                   (total, item) => total + item.qty * item.price,
                   0
-                )}
+                ))}
               </b>
             </div>
           </div>

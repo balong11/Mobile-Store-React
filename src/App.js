@@ -12,13 +12,15 @@ import Search from "./pages/Search";
 import ProductDetails from "./pages/ProductDetails";
 import Success from "./pages/Success";
 import NotFound from "./pages/NotFound";
-import store from "./redux-setup/store";
+import store, { persistor } from "./redux-setup/store";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 
 export const App = () => {
   return (
     <Provider store = {store}>
+    <PersistGate persistor={persistor}> 
     <BrowserRouter>
 
         {/*	Header	*/}
@@ -57,6 +59,7 @@ export const App = () => {
         <Footer />
 
     </BrowserRouter>
+    </PersistGate> 
     </Provider>
   );
 };

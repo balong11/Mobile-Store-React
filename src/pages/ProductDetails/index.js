@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {getCommentsProduct, getProduct, createCommentsProduct } from "../../services/Api";
-import { getImageProduct } from "../../shared/ultils";
+import { formatPrice, getImageProduct } from "../../shared/ultils";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import { useDispatch } from "react-redux";
@@ -86,7 +86,7 @@ export const ProductDetails = () => {
                   <span>Khuyến Mại:</span> {product.promotion}
                 </li>
                 <li id="price">Giá Bán (chưa bao gồm VAT)</li>
-                <li id="price-number">{product.price}</li>
+                <li id="price-number">{formatPrice(product.price)}</li>
                 <li
                   className={product.is_stock ? "" : "text-danger"}
                   id="status"
