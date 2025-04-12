@@ -1,44 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getBanners } from "../../../services/Api";
+import { getImageBanner } from "../../ultils";
 
 export const Sidebar = () => {
+  const [banners, setBanners] = useState([]);
+  useEffect(() => {
+    getBanners({
+      params: {
+        sort: 1,
+        limit: 10,
+      },
+    })
+      .then(({ data }) => setBanners(data.data.docs))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <>
       <div id="sidebar" className="col-lg-4 col-md-12 col-sm-12">
         <div id="banner">
-          <div className="banner-item">
-            <Link to="#">
-              <img className="img-fluid" src="images/banner-1.png" />
-            </Link>
-          </div>
-          <div className="banner-item">
-            <Link to="#">
-              <img className="img-fluid" src="images/banner-2.png" />
-            </Link>
-          </div>
-          <div className="banner-item">
-            <Link to="#">
-              <img className="img-fluid" src="images/banner-3.png" />
-            </Link>
-          </div>
-          <div className="banner-item">
-            <Link to="#">
-              <img className="img-fluid" src="images/banner-4.png" />
-            </Link>
-          </div>
-          <div className="banner-item">
-            <a to="#">
-              <img className="img-fluid" src="images/banner-5.png" />
-            </a>
-          </div>
-          <div className="banner-item">
-            <Link to="#">
-              <img className="img-fluid" src="images/banner-6.png" />
-            </Link>
-          </div>
+          {banners.map((item, index) => (
+            <div key={index} className="banner-item">
+              <Link to="#">
+                <img className="img-fluid" src={getImageBanner(item.image)} />
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </>
   );
 };
-export default Sidebar
+export default Sidebar;

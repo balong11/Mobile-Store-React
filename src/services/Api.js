@@ -9,3 +9,7 @@ export const getCommentsProduct = (id, config) => Http.get(`/products/${id}/comm
 export const createCommentsProduct = (id, data) => Http.post(`/products/${id}/comments`, data)
 export const order = (data) => Http.post(`/order`, data);
 
+export const getSliders = (config) => Http.get("/sliders", config);
+export const getBanners = (config) => Http.get("/banners",config);
+export const registerCustomer = (data) => Http.post("/customers/register",data);
+export const loginCustomer = (data) => Http.post("/customers/login", data);

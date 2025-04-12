@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { loggedOut } from "../../../redux-setup/reducers/auth";
 
 const Header = () => {
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+  const login = useSelector(({ auth }) => auth.login);
+  const logged = login.logged;
+  const dispatch = useDispatch();
   const totalCart = useSelector(({ cart }) =>
     cart.items.reduce((total, item) => total + item.qty, 0)
   );
@@ -13,6 +17,11 @@ const Header = () => {
     e.preventDefault();
     return navigate(`/Search?keyword=${keyword}`);
   };
+  const clickLogOut = (e) => {
+    e.preventDefault();
+    dispatch(loggedOut());
+    return navigate("/Login");
+  }
   return (
     <>
       <div id="header">
@@ -45,13 +54,27 @@ const Header = () => {
             </div>
             <div id="cart" className="col-lg-5 col-md-12 col-sm-12">
               <i className="fa-solid fa-user mr-1" />
-              <Link className="mr-2" to="#">
-                đăng nhập
-              </Link>
-              |
-              <Link className="mr-2 ml-2" to="#">
-                đăng ký
-              </Link>
+              {logged ? (
+                <>
+                  <Link className="mr-2" to="#">
+                    {login.currentCustomer?.customer.fullName}
+                  </Link>
+                  |
+                  <a onClick={clickLogOut} className="mr-2 ml-2" href="#">
+                    đăng xuất
+                  </a>
+                </>
+              ) : (
+                <>
+                  <Link className="mr-2" to="/Login">
+                    đăng nhập
+                  </Link>
+                  |
+                  <Link className="mr-2 ml-2" to="/Register">
+                    đăng ký
+                  </Link>
+                </>
+              )}
               |
               <Link className="mt-4 mr-2 ml-2" to="/cart">
                 giỏ hàng
