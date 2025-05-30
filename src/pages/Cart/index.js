@@ -6,6 +6,7 @@ import { deleteItemCart, updateCart } from "../../redux-setup/reducers/cart";
 import { order } from "../../services/Api";
 
 const Cart = () => {
+  const login = useSelector(({ auth }) => auth.login);
   const itemsCart = useSelector(({ cart }) => cart.items);
   //update cart
   const dispatch = useDispatch();
@@ -13,7 +14,9 @@ const Cart = () => {
     const value = Number(e.target.value);
     if (value === 0) {
       // eslint-disable-next-line no-restricted-globals
-      const isconfirm = confirm("Bạn có muốn xóa sản phẩm khỏi giỏi hàng không?");
+      const isconfirm = confirm(
+        "Bạn có muốn xóa sản phẩm khỏi giỏi hàng không?"
+      );
       return isconfirm ? dispatch(deleteItemCart({ _id: id })) : false;
     }
     dispatch(
@@ -31,24 +34,27 @@ const Cart = () => {
     return isConfirm ? dispatch(deleteItemCart({ _id: id })) : false;
   };
   //order
-  const [inputCustomer, setInputCustomer] = useState({});
+  // const [inputCustomer, setInputCustomer] = useState({});
   const newItemsCart = itemsCart.map((item) => ({
     prd_id: item._id,
     price: item.price,
     qty: item.qty,
   }));
   const data = {
-    ...inputCustomer,
-    customer_id: "507f1f77bcf86cd799439011",
+    customer_id: login.currentCustomer?.customer._id,
+    fullName: login.currentCustomer?.customer.fullName,
+    email: login.currentCustomer?.customer.email,
+    phone: login.currentCustomer?.customer.phone,
+    address: login.currentCustomer?.customer.address,
     items: newItemsCart,
   };
-  const changeInputs = (e) => {
-    const { name, value } = e.target;
-    return setInputCustomer({
-      ...inputCustomer,
-      [name]: value,
-    });
-  };
+  // const changeInputs = (e) => {
+  //   const { name, value } = e.target;
+  //   return setInputCustomer({
+  //     ...inputCustomer,
+  //     [name]: value,
+  //   });
+  // };
   const navigate = useNavigate();
   const clickOrder = (e) => {
     e.preventDefault();
@@ -57,7 +63,6 @@ const Cart = () => {
     order(data)
       .then(() => navigate("/Success"))
       .catch((err) => console.log(err));
-    
   };
   return (
     <>
@@ -103,10 +108,12 @@ const Cart = () => {
             </div>
             <div className="cart-price col-lg-3 col-md-3 col-sm-12">
               <b>
-                {formatPrice(itemsCart.reduce(
-                  (total, item) => total + item.qty * item.price,
-                  0
-                ))}
+                {formatPrice(
+                  itemsCart.reduce(
+                    (total, item) => total + item.qty * item.price,
+                    0
+                  )
+                )}
               </b>
             </div>
           </div>
@@ -115,7 +122,7 @@ const Cart = () => {
       <div>
         {/*	Customer Info	*/}
         <div id="customer">
-          <form method="post">
+          {/* <form method="post">
             <div className="row">
               <div id="customer-name" className="col-lg-4 col-md-4 col-sm-12">
                 <input
@@ -158,13 +165,20 @@ const Cart = () => {
                 />
               </div>
             </div>
-          </form>
+          </form> */}
           <div className="row">
             <div className="by-now col-lg-6 col-md-6 col-sm-12">
-              <a onClick={clickOrder} href="#">
-                <b>Mua ngay</b>
-                <span>Giao hàng tận nơi siêu tốc</span>
-              </a>
+              {login.logged ? (
+                <a onClick={clickOrder} href="#">
+                  <b>Mua ngay</b>
+                  <span>Giao hàng tận nơi siêu tốc</span>
+                </a>
+              ) : (
+                <a href="/Login">
+                  <b>Đăng Nhập</b>
+                  <span>Đăng Nhập Để Mua Hàng</span>
+                </a>
+              )}
             </div>
             <div className="by-now col-lg-6 col-md-6 col-sm-12">
               <a href="#">

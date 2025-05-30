@@ -13,3 +13,8 @@ export const getSliders = (config) => Http.get("/sliders", config);
 export const getBanners = (config) => Http.get("/banners",config);
 export const registerCustomer = (data) => Http.post("/customers/register",data);
 export const loginCustomer = (data) => Http.post("/customers/login", data);
+export const getOrders = (id) => Http.get(`/customers/${id}/orders`, id);
+export const getOrderDetail = (id) => Http.get(`/customer/orders/${id}`, id);
+export const orderCanceled = (id) => Http.get(`/customer/orders/${id}/canceled`, id)
+export const updateCustomer = (id, data) => Http.post(`/customers/${id}/update`,data);
+export const refreshToken = () => Http.get(`/customer/refreshtoken`);

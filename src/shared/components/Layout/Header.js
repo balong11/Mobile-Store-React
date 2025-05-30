@@ -9,6 +9,7 @@ const Header = () => {
   const login = useSelector(({ auth }) => auth.login);
   const logged = login.logged;
   const dispatch = useDispatch();
+  const id = login.currentCustomer?.customer._id;
   const totalCart = useSelector(({ cart }) =>
     cart.items.reduce((total, item) => total + item.qty, 0)
   );
@@ -56,7 +57,7 @@ const Header = () => {
               <i className="fa-solid fa-user mr-1" />
               {logged ? (
                 <>
-                  <Link className="mr-2" to="#">
+                  <Link className="mr-2" to={`/UpdateCustomer-:${id}`}>
                     {login.currentCustomer?.customer.fullName}
                   </Link>
                   |
@@ -85,7 +86,7 @@ const Header = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="#">
+                    <Link to="/Orders">
                       <i className="fas fa-file-alt" /> Đơn hàng đã mua
                     </Link>
                   </li>

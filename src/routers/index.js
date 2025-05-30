@@ -7,6 +7,10 @@ import Success from "../pages/Success";
 import NotFound from "../pages/NotFound";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
+import Orders from "../pages/Order";
+import OrderDetails from "../pages/OrderDetails";
+import UpdateCustomer from "../pages/UpdateCustomer";
+
 
 export default [
   {
@@ -45,5 +49,17 @@ export default [
   {
     path: "/Login",
     element: Login,
+  },
+  {
+    path: "/Orders",
+    element: Orders,
+  },
+  {
+    path: "/OrderDetail-:id",
+    element: OrderDetails,
+  },
+  {
+    path: "/UpdateCustomer-:id",
+    element: UpdateCustomer,
   },
 ];
