@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Footer = () => {
   return (
     <>
-      <div id="footer-top">
+      {/* <div id="footer-top">
         <div className="container">
           <div className="row">
             <div id="logo-2" className="col-lg-3 col-md-6 col-sm-12">
@@ -38,15 +38,15 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/*	Footer	*/}
       <div id="footer-bottom">
         <div className="container">
           <div className="row">
             <div className="col-lg-12 col-md-12 col-sm-12">
               <p>
-                2018 © Vietpro Academy. All rights reserved. Developed by
-                Vietpro Software.
+                2025 © Long Shop. All rights reserved. Developed by
+                Long Shop.
               </p>
             </div>
           </div>

@@ -22,18 +22,53 @@ const Header = () => {
     e.preventDefault();
     dispatch(loggedOut());
     return navigate("/Login");
-  }
+  };
   return (
     <>
       <div id="header">
         <div className="container">
           <div className="row">
-            <div id="logo" className="col-lg-3 col-md-12 col-sm-12">
+            {/* <div id="logo" className="col-lg-3 col-md-12 col-sm-12">
               <h1>
                 <Link to="/">
-                  <img className="img-fluid" src="images/logo.png" />
+                  <img className="img-fluid" src="images/logo-long.png" />
                 </Link>
               </h1>
+            
+            </div> */}
+            <div
+              id="logo"
+              className="col-lg-3 col-md-12 col-sm-12 d-flex flex-column align-items-center justify-content-center"
+            >
+              <div className="d-flex align-items-center">
+                <Link to="/">
+                  <img
+                    src="/images/logo-long.png"
+                    alt="Logo"
+                    style={{
+                      height: "50px", // hoặc giá trị bạn muốn
+                      objectFit: "contain",
+                    }}
+                  />
+                </Link>
+                <div className="ml-2">
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "18px",
+                      color: "#fff",
+                      lineHeight: 1,
+                    }}
+                  >
+                    LONG MOBILE SHOP
+                  </div>
+                  <div
+                    style={{ fontSize: "12px", color: "#fff", lineHeight: 1 }}
+                  >
+                    Demo project
+                  </div>
+                </div>
+              </div>
             </div>
             <div id="search" className="col-lg-4 col-md-12 col-sm-12">
               <form className="form-inline">
